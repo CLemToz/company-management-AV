@@ -27,6 +27,7 @@ class User extends Authenticatable
         'team',
         'manager_id',
         'joining_date',
+        'designation',
         'employment_type',
         'status',
         'profile_image',
