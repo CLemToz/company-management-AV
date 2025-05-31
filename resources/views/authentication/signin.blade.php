@@ -47,9 +47,8 @@
                         @error('password')
                             <div style="color: red;">{{ $message }}</div>
                         @enderror
-                        <span
-                            class="toggle-password ri-eye-line cursor-pointer absolute end-0 top-1/2 -translate-y-1/2 me-4 text-secondary-light"
-                            data-toggle="#your-password"></span>
+                       <span class="toggle-password ri-eye-line cursor-pointer absolute end-0 top-1/2 -translate-y-1/2 me-4 text-secondary-light"
+      data-toggle="#your-password"></span>
                     </div>
                     <div class="mt-7">
                         <div class="flex justify-between gap-2">
@@ -90,7 +89,7 @@
                                     </script>';
     @endphp
 
-    <x-script />
+    <x-script :script="$script" />
 
 </body>
 
