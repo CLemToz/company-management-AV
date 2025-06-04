@@ -29,11 +29,30 @@ Route::controller(Login::class)->group(function () {
     Route::post('/logout', 'logout')->name('logout');  // Handle logout
 });
 
+
+// Middleware for login to dashboard
+// Route::middleware('auth')->group(function () {
+//     Route::get('/dashboard', function () {
+//         return 'Welcome to dashboard, ' . auth()->user()->name;
+//     })->name('dashboard');
+// });
+
+// User based routing for dashboard 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        return 'Welcome to dashboard, ' . auth()->user()->name;
+    Route::get('/userbase', function () {
+        $role = auth()->user()->role;
+
+        return match ($role) {
+            'admin' => view('dashboard.admin'),
+            'hr' => view('dashboard.hr'),
+            'employee' => view('dashboard.employee'),
+            'project_manager' => view('dashboard.project_manager'),
+            'senior_executive' => view('dashboard.senior_executive'),
+            default => abort(403, 'Unauthorized access.'),
+        };
     })->name('dashboard');
 });
+
 
 
 // Main middleware blocking users to access pages directly without login
