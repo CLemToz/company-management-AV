@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('address')->nullable();
 
             $table->enum('role', ['admin', 'employee', 'hr', 'project_manager', 'senior_executive'])->default('employee');
-            $table->string('designation')->nullable();
+            $table->string('department')->nullable();
             $table->string('team')->nullable();
             $table->unsignedBigInteger('manager_id')->nullable();
 
