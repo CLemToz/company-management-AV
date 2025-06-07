@@ -15,11 +15,28 @@ use App\Http\Controllers\TableController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CryptocurrencyController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\API\ClientController;
+
+
 
 // Main Dashboard page.. 
 // Route::controller(DashboardController::class)->group(function () {
 //     Route::get('/', 'index')->name('index');
 // });
+
+// Clint Managemet
+Route::middleware(['auth:sanctum', 'role:admin,senior'])->group(function () {
+    Route::get('/clients', [ClientController::class, 'index']);
+    Route::get('/clients/{id}', [ClientController::class, 'show']);
+});
+
+Route::middleware(['auth:sanctum', 'role:admin'])->group(function () {
+    Route::post('/clients', [ClientController::class, 'store']);
+    Route::put('/clients/{id}', [ClientController::class, 'update']);
+    Route::delete('/clients/{id}', [ClientController::class, 'destroy']);
+});
+
+
 
 
 // Login page
