@@ -8,7 +8,7 @@
 @section('content')
 
 <div class="max-w-4xl mx-auto bg-white dark:bg-neutral-800 shadow rounded-xl p-8">
-
+    <h6>This page needs dark mode optimization</h6>
     <div class="overflow-x-auto">
         <table class="w-full table-auto border border-gray-200 dark:border-neutral-600 text-sm">
             <tbody>
