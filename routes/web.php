@@ -14,6 +14,7 @@ use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\CryptocurrencyController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 // Main Dashboard page.. 
@@ -37,6 +38,10 @@ Route::controller(Login::class)->group(function () {
 //     })->name('dashboard');
 // });
 
+
+
+
+
 // User based routing for dashboard 
 Route::middleware('auth')->group(function () {
     Route::get('/userbase', function () {
@@ -58,6 +63,13 @@ Route::middleware('auth')->group(function () {
 // Main middleware blocking users to access pages directly without login
 Route::middleware('auth')->group(function () {
 
+    Route::middleware('auth')->group(function () {
+        Route::resource('clients', ClientController::class);
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::resource('clients', ClientController::class);
+    });
 
     Route::controller(HomeController::class)->group(function () {
         Route::get('calendar-Main', 'calendarMain')->name('calendarMain');
